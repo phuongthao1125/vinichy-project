@@ -52,7 +52,7 @@ public class KhuyenMaiService {
         }
 
         // Kiểm tra giới hạn: 1 tài khoản dùng 1 lần (sử dụng bảng mới)
-        if (suDungKhuyenMaiRepository.findByTaiKhoan_IdAndKhuyenMai_MaGiamGia(taiKhoanId, code).isPresent()) {
+        if (!suDungKhuyenMaiRepository.findByTaiKhoan_IdAndKhuyenMai_MaGiamGia(taiKhoanId, code).isEmpty()) {
             return "Bạn đã sử dụng mã khuyến mãi này cho một đơn hàng trước đó.";
         }
 

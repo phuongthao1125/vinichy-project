@@ -8,6 +8,6 @@ import java.util.Optional;
 
 @Repository
 public interface SuDungKhuyenMaiRepository extends JpaRepository<SuDungKhuyenMai, Long> {
-    Optional<SuDungKhuyenMai> findByTaiKhoan_IdAndKhuyenMai_MaGiamGia(Long taiKhoanId, String maGiamGia);
+    java.util.List<SuDungKhuyenMai> findByTaiKhoan_IdAndKhuyenMai_MaGiamGia(Long taiKhoanId, String maGiamGia);
     long countByKhuyenMai_MaGiamGia(String maGiamGia);
 }

@@ -1,0 +1,206 @@
+:root {
+    --vinichy-gold: #A09A78;
+    --vinichy-black: #111111;
+    --vinichy-bg: #F9F9F7;
+    --vinichy-white: #FFFFFF;
+    --vinichy-gray: #717171;
+    --vinichy-border: #E8E8E1;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--vinichy-bg);
+    color: var(--vinichy-black);
+    margin: 0;
+    display: flex;
+}
+
+/* SIDEBAR LUXURY */
+.admin-sidebar {
+    width: 280px;
+    background-color: var(--vinichy-black);
+    height: 100vh;
+    color: var(--vinichy-white);
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+.sidebar-header {
+    padding: 40px 30px;
+    text-align: center;
+    border-bottom: 1px solid #222;
+}
+
+.sidebar-logo {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: var(--vinichy-gold);
+    text-decoration: none;
+}
+
+.sidebar-menu {
+    padding: 30px 0;
+    flex-grow: 1;
+}
+
+.menu-link {
+    display: flex;
+    align-items: center;
+    padding: 16px 30px;
+    color: #999;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 0.3s;
+    border-left: 4px solid transparent;
+}
+
+.menu-link i {
+    margin-right: 15px;
+    font-size: 18px;
+    width: 24px;
+}
+
+.menu-link:hover, .menu-link.active {
+    color: var(--vinichy-gold);
+    background: rgba(160, 154, 120, 0.05);
+    border-left-color: var(--vinichy-gold);
+}
+
+/* CONTENT AREA */
+.admin-container {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+    min-height: 100vh;
+}
+
+.admin-header {
+    background: var(--vinichy-white);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--vinichy-border);
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+
+.admin-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.admin-main {
+    padding: 40px;
+}
+
+/* DASHBOARD CARDS */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background: var(--vinichy-white);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid var(--vinichy-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 28px;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.stat-label {
+    color: var(--vinichy-gray);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    background: rgba(160, 154, 120, 0.1);
+    color: var(--vinichy-gold);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+/* PREMIUM TABLE */
+.premium-card {
+    background: var(--vinichy-white);
+    border-radius: 16px;
+    border: 1px solid var(--vinichy-border);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+}
+
+.card-header {
+    padding: 25px 30px;
+    border-bottom: 1px solid var(--vinichy-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+}
+
+.vinichy-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.vinichy-table th {
+    background: #FDFDFB;
+    padding: 18px 30px;
+    text-align: left;
+    font-size: 13px;
+    color: var(--vinichy-gray);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid var(--vinichy-border);
+}
+
+.vinichy-table td {
+    padding: 20px 30px;
+    border-bottom: 1px solid var(--vinichy-border);
+    font-size: 15px;
+}
+
+/* BUTTONS */
+.btn-gold {
+    background-color: var(--vinichy-gold);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-gold:hover {
+    background-color: #8c8668;
+    transform: translateY(-2px);
+}

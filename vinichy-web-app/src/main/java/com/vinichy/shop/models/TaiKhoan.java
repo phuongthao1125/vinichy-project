@@ -21,6 +21,9 @@ public class TaiKhoan {
     @Column(name = "mat_khau", nullable = false)
     private String matKhau;
 
+    @Column(name = "vai_tro")
+    private String vaiTro; // "ADMIN" hoặc "USER"
+
     @OneToMany(mappedBy = "taiKhoan")
     private List<ThongTinGiaoHang> danhSachThongTinGiaoHang;
 }

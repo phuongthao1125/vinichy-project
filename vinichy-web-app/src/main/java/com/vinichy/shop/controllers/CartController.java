@@ -313,31 +313,36 @@ public class CartController {
     @GetMapping("/api/khuyen-mai/available")
     @ResponseBody
     public ResponseEntity<?> getAvailablePromotions(HttpSession session) {
-        Long taiKhoanId = (Long) session.getAttribute("taiKhoanId");
-        if (taiKhoanId == null) return ResponseEntity.status(401).body(Map.of("success", false));
+        try {
+            Long taiKhoanId = (Long) session.getAttribute("taiKhoanId");
+            if (taiKhoanId == null) return ResponseEntity.status(401).body(Map.of("success", false, "message", "Unauthorized"));
 
-        java.time.LocalDateTime now = java.time.LocalDateTime.now();
-        List<KhuyenMai> allActive = khuyenMaiRepo.findAll().stream()
-            .filter(km -> km.getTrangThai() != null && km.getTrangThai() == 1)
-            .filter(km -> km.getNgayBatDau() == null || now.isAfter(km.getNgayBatDau()))
-            .filter(km -> km.getNgayKetThuc() == null || now.isBefore(km.getNgayKetThuc()))
-            .collect(Collectors.toList());
+            java.time.LocalDateTime now = java.time.LocalDateTime.now();
+            List<KhuyenMai> allActive = khuyenMaiRepo.findAll().stream()
+                .filter(km -> km.getTrangThai() != null && km.getTrangThai() == 1)
+                .filter(km -> km.getNgayBatDau() == null || now.isAfter(km.getNgayBatDau()))
+                .filter(km -> km.getNgayKetThuc() == null || now.isBefore(km.getNgayKetThuc()))
+                .collect(Collectors.toList());
 
-        List<Map<String, Object>> available = allActive.stream()
-            .filter(km -> suDungKhuyenMaiRepo.findByTaiKhoan_IdAndKhuyenMai_MaGiamGia(taiKhoanId, km.getMaGiamGia()).isEmpty())
-            .map(km -> {
-                Map<String, Object> m = new HashMap<>();
-                m.put("code", km.getMaGiamGia());
-                m.put("name", km.getTenKhuyenMai());
-                m.put("value", km.getGiaTriGiam());
-                m.put("minOrder", km.getDonToiThieu());
-                m.put("endDate", km.getNgayKetThuc());
-                m.put("totalLimit", km.getSoLuotSD());
-                return m;
-            })
-            .collect(Collectors.toList());
+            List<Map<String, Object>> available = allActive.stream()
+                .filter(km -> suDungKhuyenMaiRepo.findByTaiKhoan_IdAndKhuyenMai_MaGiamGia(taiKhoanId, km.getMaGiamGia()).isEmpty())
+                .map(km -> {
+                    Map<String, Object> m = new HashMap<>();
+                    m.put("code", km.getMaGiamGia());
+                    m.put("name", km.getTenKhuyenMai());
+                    m.put("value", km.getGiaTriGiam());
+                    m.put("minOrder", km.getDonToiThieu());
+                    m.put("endDate", km.getNgayKetThuc());
+                    m.put("totalLimit", km.getSoLuotSD());
+                    return m;
+                })
+                .collect(Collectors.toList());
 
-        return ResponseEntity.ok(Map.of("success", true, "data", available));
+            return ResponseEntity.ok(Map.of("success", true, "data", available));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(Map.of("success", false, "message", "Internal Server Error: " + e.getMessage()));
+        }
     }
 
     // ===== API ĐẶT HÀNG =====

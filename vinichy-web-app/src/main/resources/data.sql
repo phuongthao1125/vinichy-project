@@ -1,13 +1,13 @@
 -- 1. Tài Khoản (Accounts)
-INSERT OR IGNORE INTO tai_khoan (ten_dang_nhap, mat_khau) VALUES
-('admin@vinichy.com', '123456'),
-('phuongthao@gmail.com', '123456'),
-('thaophan@gmail.com', '123456'),
-('phuongthao1111@gmail.com', '123456'),
-('khanhly@gmail.com', '123456'),
-('anhphuong@gmail.com', '123456'),
-('xuankhanh@gmail.com', '123456'),
-('thuha@gmail.com', '123456');
+INSERT OR IGNORE INTO tai_khoan (ten_dang_nhap, mat_khau, vai_tro) VALUES
+('admin@vinichy.com', '123456', 'ADMIN'),
+('phuongthao@gmail.com', '123456', 'USER'),
+('thaophan@gmail.com', '123456', 'USER'),
+('phuongthao1111@gmail.com', '123456', 'USER'),
+('khanhly@gmail.com', '123456', 'USER'),
+('anhphuong@gmail.com', '123456', 'USER'),
+('xuankhanh@gmail.com', '123456', 'USER'),
+('thuha@gmail.com', '123456', 'USER');
 
 -- 2. Loại Sản Phẩm (Categories)
 INSERT OR IGNORE INTO loai_sp (id, ten_loai, slug) VALUES

@@ -47,6 +47,7 @@ public class AuthController {
         session.setAttribute("taiKhoanId", tk.getId());
         session.setAttribute("email", email);
         session.setAttribute("hoTen", hoTen);
+        session.setAttribute("vaiTro", tk.getVaiTro()); // Lưu vai trò vào session
 
         return ResponseEntity.ok(Map.of(
             "success", true,
@@ -152,6 +153,7 @@ public class AuthController {
         TaiKhoan tk = new TaiKhoan();
         tk.setTenDangNhap(email.trim());
         tk.setMatKhau(matKhau);
+        tk.setVaiTro("USER"); // Mặc định là USER
         taiKhoanRepo.save(tk);
 
         // Xóa OTP khỏi session
@@ -163,6 +165,7 @@ public class AuthController {
         session.setAttribute("taiKhoanId", tk.getId());
         session.setAttribute("email", userEmail);
         session.setAttribute("hoTen", userHoTen);
+        session.setAttribute("vaiTro", tk.getVaiTro());
 
         return ResponseEntity.ok(Map.of(
             "success", true,

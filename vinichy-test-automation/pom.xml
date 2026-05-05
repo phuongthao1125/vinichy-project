@@ -5,7 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.example</groupId>
-    <artifactId>KTAu_Sele_Java_Nhom06</artifactId>
+    <artifactId>Sele_Vinichy_Nhom06</artifactId>
+    <name>Sele_Vinichy_Nhom06</name>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
